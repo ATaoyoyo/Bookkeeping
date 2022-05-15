@@ -1,5 +1,4 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native'
 import * as eva from '@eva-design/eva'
 import { ThemeContext } from './themes/theme-context'
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
@@ -7,7 +6,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import AppNavigator from './components/Navigation'
 
 const App = () => {
-  const [theme, setTheme] = React.useState('light')
+  const [theme, setTheme] = React.useState('dark')
 
   const toggleTheme = () => {
     const nextTheme = theme === 'light' ? 'dark' : 'light'

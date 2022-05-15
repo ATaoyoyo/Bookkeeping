@@ -9,7 +9,7 @@ const { Navigator, Screen } = createStackNavigator()
 
 const HomeNavigator = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#1A2035' }}>
       <Navigator screenOptions={{ headerShown: false }}>
         <Screen name='login' component={LoginScreen} />
       </Navigator>
