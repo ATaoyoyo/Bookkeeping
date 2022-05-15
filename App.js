@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { SafeAreaView } from 'react-native'
+import * as eva from '@eva-design/eva'
+import { ThemeContext } from './themes/theme-context'
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
+import { EvaIconsPack } from '@ui-kitten/eva-icons'
+import AppNavigator from './components/Navigation'
 
-export default function App() {
+const App = () => {
+  const [theme, setTheme] = React.useState('light')
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(nextTheme)
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <>
+      <IconRegistry icons={EvaIconsPack} />
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ApplicationProvider {...eva} theme={eva[theme]}>
+          <AppNavigator />
+        </ApplicationProvider>
+      </ThemeContext.Provider>
+    </>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
