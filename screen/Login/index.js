@@ -10,12 +10,13 @@ const InputLabel = ({ text }) => (
   </View>
 )
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [loginForm, setLoginForm] = useState({ username: '', password: '' })
-
   const getCode = () => {}
 
-  const onLogin = () => {}
+  const onLogin = () => {
+    navigation.navigate('home')
+  }
 
   return (
     <Layout style={style.container}>
@@ -55,7 +56,9 @@ const LoginScreen = () => {
           </View>
         </View>
 
-        <Button style={style.from.loginButton}>登 陆</Button>
+        <Button onPress={onLogin} style={style.from.loginButton}>
+          登 陆
+        </Button>
       </Layout>
 
       <Layout style={style.bottom}>
